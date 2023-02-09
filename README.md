@@ -1,4 +1,4 @@
-# Nasudonguri CSS
+# Nasudonguri Standard
 # How to use
 * Insert the following code in the head tag.
 ```

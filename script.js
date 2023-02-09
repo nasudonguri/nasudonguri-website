@@ -1,8 +1,9 @@
 let cdnList = {
   js: [
-    'https://cdn.jsdelivr.net/npm/muicss/dist/js/mui.min.js',
-    'https://cdn.jsdelivr.net/npm/ua-parser-js@latest/dist/ua-parser.min.js',
-    'https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js'
+    '//cdn.jsdelivr.net/npm/muicss/dist/js/mui.min.js',
+    '//cdn.jsdelivr.net/npm/ua-parser-js@latest/dist/ua-parser.min.js',
+    '//cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js',
+    '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
   ],
   css: [
     'https://cdn.jsdelivr.net/npm/muicss/dist/css/mui.min.css',

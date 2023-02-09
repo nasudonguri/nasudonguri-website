@@ -1,8 +1,9 @@
-# Nasudonguri Standard
+# Nasudonguri CSS
 # How to use
 * Insert the following code in the head tag.
 ```
-<script src=""></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nasudonguri/nasudonguri-standard@main/style.css">
+<script src="https://cdn.jsdelivr.net/gh/nasudonguri/nasudonguri-standard@main/script.js"></script>
 ```
 
 * Insert the following code in the body tag.

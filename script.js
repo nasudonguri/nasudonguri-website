@@ -3,11 +3,13 @@ let cdnList = {
     'https://cdn.jsdelivr.net/npm/muicss/dist/js/mui.min.js',
     'https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js',
     'https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.npm.min.js',
-    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit',
+    'https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js'
   ],
   css: [
     'https://cdn.jsdelivr.net/npm/muicss/dist/css/mui.min.css',
-    'https://fonts.googleapis.com/icon?family=Material+Icons'
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    'https://cdn.jsdelivr.net/npm/typed.js/assets/demos.min.css'
   ]
 };
 

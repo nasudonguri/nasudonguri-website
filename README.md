@@ -13,6 +13,6 @@
 </noscript>
 ```
 
-This is made by Nasudonguri.
-(C) Nasudonguri 2023
+This is made by Nasudonguri.<br>
+(C) Nasudonguri 2023<br>
 MIT License

@@ -20,7 +20,7 @@ let pageConfig = {
 
 let authorInfo = {
   name: '',
-  sns: {}
+  link: {}
 };
 
 let pageList = {};

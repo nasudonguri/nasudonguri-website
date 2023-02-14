@@ -16,21 +16,19 @@ i {
 }
 
 .load {
-  background-color: #00008b;
-  width:0;
-  height:30px;
+  background: linear-gradient(90deg, #0000ff,  #fff);
+  background-size: 200% 100%;
+  width: 50%;
+  height: 30px;
   animation: loading 1s linear infinite;
 }
 
 @keyframes loading {
-  0% {
-    width: 0;
+  0%, 100% {
+    background-position: 0 0;
   }
   50% {
-    width: 50vw;
-  }
-  100% {
-    width: 0;
+    background-position: 100% 0;
   }
 }
 

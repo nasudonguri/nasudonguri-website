@@ -2,7 +2,6 @@ let cdnList = {
   js: [
     'https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js',
     'https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.npm.min.js',
-    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit',
     'https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js'
   ],
   css: [
@@ -30,9 +29,21 @@ let pageList = {};
 let headerHTML = ``;
 let footerHTML = ``;
 
-const sendDiscord = (url, text) => {
-  
-}
+const now = new Date();
+
+const sendDiscord = (url, msg) => {
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'username': user,
+      'content': `${msg}
+${now}, ${device}`
+    })
+  });
+};
 
 const init = () => {
   // Add JavaScript CDN
@@ -78,7 +89,13 @@ const init = () => {
     if(pageConfig.discord != false){
       sendDiscord(pageConfig.discord, `Access`);
     }
+
+    document.title = pageConfig.title;
+
+    let typedElem = document.querySelector('[id^=typed-strings]');
+    for(let i = 0; i < typedElem.length; i++)
+    let typed = new Typed(`#typed${i}`, {
+      stringsElement: `#typed-strings${i}`
+    });
   }
 };
-
-document.title = pageConfig.title;

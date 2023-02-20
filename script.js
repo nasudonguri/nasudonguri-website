@@ -2,7 +2,8 @@ let cdnList = {
   js: [
     'https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js',
     'https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.npm.min.js',
-    'https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js'
+    'https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js',
+    'https://cdn.jsdelivr.net/npm/qr-code-styling/lib/qr-code-styling.min.js'
   ],
   css: [
     'https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css',

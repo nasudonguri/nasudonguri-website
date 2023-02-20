@@ -15,7 +15,9 @@ let cdnList = {
 let pageConfig = {
   title: document.title,
   description: document.querySelector('meta[name="description"]').innerHTML,
-  date: ''
+  header: true,
+  footer: true,
+  discord: false
 };
 
 let authorInfo = {
@@ -28,9 +30,11 @@ let pageList = {};
 let headerHTML = ``;
 let footerHTML = ``;
 
-document.title = 'Loading...';
+const sendDiscord = (url, text) => {
+  
+}
 
-document.head.onload = () => {
+const init = () => {
   // Add JavaScript CDN
   for(path of cdnList.js){
     let jsTag = document.createElement('script');
@@ -45,20 +49,36 @@ document.head.onload = () => {
     cssTag.href = path;
     document.head.appendChild(cssTag);
   };
-};
 
-document.body.onload = () => {
   // Add header
-  let header = document.createElement('header');
-  header.innerHTML = headerHTML;
-  document.body.prepend(header);
+  if(pageConfig.header){
+    let header = document.createElement('header');
+    header.innerHTML = headerHTML;
+    document.body.prepend(header);
+  }
 
   // Add footer
-  let footer = document.createElement('footer');
-  footer.innerHTML = footerHTML;
-  document.body.append(footer);
+  if(pageConfig.footer){
+    let footer = document.createElement('footer');
+    footer.innerHTML = footerHTML;
+    document.body.append(footer);
+  }
+
+  document.head.onload = () => {
+    // Get UserAgent
+    let uap = UAParser().getResult();
+
+    let device = `
+      Browser: ${uap.browser.toString()}
+      OS: ${uap.os.toString()}
+      Device: ${uap.device.toString()}
+    `;
+
+    // Send Discord
+    if(pageConfig.discord != false){
+      sendDiscord(pageConfig.discord, `Access`);
+    }
+  }
 };
 
-window.onload = () => {
-  document.title = pageConfig.title;
-};
+document.title = pageConfig.title;

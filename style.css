@@ -15,6 +15,14 @@ i {
   -webkit-font-smoothing: antialiased;
 }
 
+.open {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 .load {
   background: linear-gradient(90deg, transparent,  transparent 45%, #0000ff 45%, #0000ff 55%,  transparent 55%,  transparent);
   background-size: 200% 100%;
@@ -37,6 +45,13 @@ header {
   top: 5px;
   left: 5px;
   position: fixed;
+}
+
+.openable-lists {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
 
 .dialog {

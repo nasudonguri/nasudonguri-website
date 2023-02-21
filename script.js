@@ -1,6 +1,10 @@
 let cdnList = {
   js: [
     'https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js',
+    'https://cdn.jsdelivr.net/npm/dayjs/dayjs.min.js',
+    'https://cdn.jsdelivr.net/npm/dayjs/plugin/timezone.min.js',
+    'https://cdn.jsdelivr.net/npm/dayjs/plugin/utc.min.js',
+    'https://cdn.jsdelivr.net/npm/dayjs/locale/ja.min.js',
     'https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.npm.min.js',
     'https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js',
     'https://cdn.jsdelivr.net/npm/qr-code-styling/lib/qr-code-styling.min.js'
@@ -12,6 +16,7 @@ let cdnList = {
   ]
 };
 
+// Config
 let pageConfig = {
   title: document.title,
   description: document.querySelector('meta[name="description"]').innerHTML,
@@ -30,8 +35,7 @@ let pageList = {};
 let headerHTML = ``;
 let footerHTML = ``;
 
-const now = new Date();
-
+// Function Send Discord
 const sendDiscord = (url, msg) => {
   fetch(url, {
     method: 'POST',
@@ -41,11 +45,12 @@ const sendDiscord = (url, msg) => {
     body: JSON.stringify({
       'username': user,
       'content': `${msg}
-${now}, ${device}`
+${now.format('YYYY年MM月DD日dd曜日 HH:mm:ss')}, ${device}`
     })
   });
 };
 
+// Init
 const init = () => {
   // Add JavaScript CDN
   for(path of cdnList.js){
@@ -77,6 +82,15 @@ const init = () => {
   }
 
   document.head.onload = () => {
+    // Day.js Config
+    dayjs.locale('ja');
+    dayjs.extend(window.dayjs_plugin_utc);
+    dayjs.extend(window.dayjs_plugin_timezone);
+    dayjs.tz.setDefault('Asia/Tokyo');
+
+    // Get Date and Time
+    let now = dayjs();
+
     // Get UserAgent
     let uap = UAParser().getResult();
 
@@ -93,10 +107,10 @@ const init = () => {
 
     document.title = pageConfig.title;
 
-    let typedElem = document.querySelector('[id^=typed-strings]');
+    let typedElem = document.querySelector('[id^=typed-strings-]');
     for(let i = 0; i < typedElem.length; i++)
-    let typed = new Typed(`#typed${i}`, {
-      stringsElement: `#typed-strings${i}`
+    let typed = new Typed(`#typed-${i}`, {
+      stringsElement: `#typed-strings-${i}`
     });
   }
 };

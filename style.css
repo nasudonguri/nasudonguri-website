@@ -1,3 +1,20 @@
+article {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  height: 10svh;
+  width: calc( 100svw - 10px );
+}
+
+header {
+  left: 5px;
+  top: 5px;
+}
+
 i {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -10,13 +27,17 @@ i {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
 
-.open {
-  display: block;
+.dialog {
+  height: 80svh;
+  left: 10svw;
+  position: fixed;
+  text-align: center;
+  top: 10svh;
+  width: 80svw;
 }
 
 .hide {
@@ -24,27 +45,16 @@ i {
 }
 
 .load {
+  animation: loading 1s linear infinite;
   background: linear-gradient(90deg, transparent,  transparent 45%, #0000ff 45%, #0000ff 55%,  transparent 55%,  transparent);
   background-size: 200% 100%;
-  width: 50%;
-  height: 10px;
   border-radius: 10px;
-  animation: loading 1s linear infinite;
+  height: 10px;
+  width: 50%;
 }
 
-@keyframes loading {
-  0%, 100% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 100% 0;
-  }
-}
-
-header {
-  top: 5px;
-  left: 5px;
-  position: fixed;
+.open {
+  display: block;
 }
 
 .openable-lists {
@@ -54,23 +64,11 @@ header {
   z-index: 3;
 }
 
-.dialog {
-  width: 80svw;
-  height: 80svh;
-  position: fixed;
-  top: 10svh;
-  left: 10svw;
-  text-align: center;
-}
-
-header, footer {
-  width: calc( 100svw - 10px );
-  height: 10svh;
-}
-
-header, footer, article, .dialog {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 5px rgba(30, 30, 30, 0.8);
+@keyframes loading {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
 }

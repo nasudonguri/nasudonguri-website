@@ -1,0 +1,21 @@
+title: 
+email: 
+description: 
+baseurl: 
+url: https://
+twitter_username: 
+github_username: 
+author: 
+
+markdown: kramdown
+
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-avatar
+
+sass:
+  style: compressed
+  sourcemap: always

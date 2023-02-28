@@ -3,9 +3,9 @@ email:
 description: 
 baseurl: 
 url: https://
-twitter_username: 
-github_username: 
 author: 
+twitter: 
+github: 
 
 markdown: kramdown
 

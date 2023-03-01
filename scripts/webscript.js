@@ -107,6 +107,8 @@ const init = () => {
 
     document.title = pageConfig.title;
 
+    twemoji.parse(document.body);
+
     let typedElem = document.querySelector('[id^=typed-strings-]');
     for(let i = 0; i < typedElem.length; i++)
     let typed = new Typed(`#typed-${i}`, {

@@ -1,0 +1,15 @@
+{
+  "name": "",
+  "short_name": "",
+  "theme_color": "#223377",
+  "background_color": "#fff",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "scope": "/",
+  "start_url": "/?pwa=1",
+  "icons": [{
+    "src": "./img/icon.ico",
+    "sizes": "48x48 72x72 96x96 128x128 192x192 256x256 512x512",
+    "type": "image/vnd.microsoft.icon"
+  }]
+}

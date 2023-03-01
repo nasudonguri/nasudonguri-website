@@ -1,16 +1,27 @@
+@media (prefers-color-scheme: light){
+  $theme-color: rgba(255, 255, 255, 0.8);
+  $text-colot: rgb(13, 13, 13);
+}
+@media (prefers-color-scheme: dark){
+  $theme-color: rgba(0, 0, 0, 0.8);
+  $text-colot: #f2f2f2;
+}
+
 article {
   backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $theme-color;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 footer {
+  background-color: $theme-color;
   height: 10svh;
   width: calc( 100svw - 10px );
 }
 
 header {
+  background-color: $theme-color;
   left: 5px;
   top: 5px;
 }
@@ -32,6 +43,7 @@ i {
 }
 
 .dialog {
+  background-color: $theme-color;
   height: 80svh;
   left: 10svw;
   position: fixed;

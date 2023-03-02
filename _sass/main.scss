@@ -1,33 +1,81 @@
-@media (prefers-color-scheme: light){
-  $theme-color: rgba(255, 255, 255, 0.8);
-  $text-colot: #0D0D0D;
+$theme-color: #0000ff;
+$theme-text-color: #f2f2f2;
+$margin: 5px;
+$padding: 5px;
+$width: calc(100svw - $margin * 2);
+
+$header-height: calc(20svh - $margin * 2);
+
+$dialog-margin: 5svmin;
+$dialog-height: calc(100svh - $dialog-margin * 2);
+$dialog-width: calc(100svh - $dialog-margin * 2);
+$dialog-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+$bg-color: rgba(255, 255, 255, 0.8);
+$text-color: #0d0d0d;
+$mark-color: #ff0;
+$shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+@media (prefers-color-scheme: dark) {
+  $bg-color: rgba(0, 0, 0, 0.8);
+  $text-color: #f2f2f2;
+  $mark-color: #ff99cc;
+  $shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
 }
-@media (prefers-color-scheme: dark){
-  $theme-color: rgba(0, 0, 0, 0.8);
-  $text-colot: #f2f2f2;
+
+* {
+  box-sizing: border-box;
+  color: $text-color;
+  z-index: 1;
 }
 
 article {
   backdrop-filter: blur(5px);
-  background-color: $theme-color;
+  background-color: $bg-color;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
+  padding: $padding;
+  z-index: 2;
+}
+
+blink {
+  animation: 0.5s linear 0s alternate none infinite running blink;
+}
+
+body {
+  background-color: $bg-color;
 }
 
 footer {
-  background-color: $theme-color;
-  height: 10svh;
-  width: calc( 100svw - 10px );
+  backdrop-filter: blur(5px);
+  background-color: $bg-color;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  padding: $padding;
+  width: $width;
+  z-index: 2;
 }
 
 header {
-  background-color: $theme-color;
-  left: 5px;
-  top: 5px;
+  backdrop-filter: blur(5px);
+  background-color: $bg-color;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  color: $theme-text-color;
+  height: $header-height;
+  left: $margin;
+  padding: $padding;
+  top: $margin;
+  width: $width;
+  z-index: 3;
+}
+
+h1 {
+  border-left: 0.5rem solid $theme-color;
 }
 
 i {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -38,18 +86,36 @@ i {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 
+mark {
+  animation: move-bg 2s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    transparent 45%,
+    $mark-color 45%,
+    $mark-color 55%,
+    transparent 55%,
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
 .dialog {
-  background-color: $theme-color;
-  height: 80svh;
-  left: 10svw;
+  background-color: $bg-color;
+  height: $dialog-height;
+  left: $dialog-margin;
   position: fixed;
-  text-align: center;
-  top: 10svh;
-  width: 80svw;
+  top: $dialog-margin;
+  width: $dialog-width;
+  z-index: 4;
 }
 
 .hide {
@@ -57,27 +123,66 @@ i {
 }
 
 .load {
-  animation: loading 1s linear infinite;
-  background: linear-gradient(90deg, transparent,  transparent 45%, #0000ff 45%, #0000ff 55%,  transparent 55%,  transparent);
+  animation: move-bg 1s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    transparent 45%,
+    $theme-color 45%,
+    $theme-color 55%,
+    transparent 55%,
+    transparent
+  );
   background-size: 200% 100%;
   border-radius: 10px;
   height: 10px;
-  width: 50%;
+  width: 50svw;
 }
 
 .open {
   display: block;
 }
 
-.openable-lists {
+.openable-lists:last-child {
+  display: none;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  z-index: 3;
+  z-index: 4;
 }
 
-@keyframes loading {
-  0%, 100% {
+.openable-lists li {
+  text-decoration: none;
+}
+
+.openable-lists:has(:first-child:hover):last-child {
+  display: block;
+  z-index: 4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $theme-color;
+  border-radius: 5px;
+}
+
+@keyframes blink {
+  0%, 20% {
+    opacity: 0;
+  }
+  20%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move-bg {
+  0%,
+  100% {
     background-position: 0 0;
   }
   50% {

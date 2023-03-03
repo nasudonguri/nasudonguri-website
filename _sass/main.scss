@@ -25,7 +25,11 @@ $shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 * {
   box-sizing: border-box;
+  display: block;
+  padding: 2px 5px;
   color: $text-color;
+  margin: 0;
+  padding: 0;
   z-index: 1;
 }
 
@@ -91,7 +95,7 @@ i {
 }
 
 mark {
-  animation: move-bg 2s linear infinite;
+  animation: mark 2s linear infinite;
   background: linear-gradient(
     90deg,
     transparent,
@@ -123,7 +127,7 @@ table {
 }
 
 .load {
-  animation: move-bg 1s linear infinite;
+  animation: loading 1s linear infinite;
   background: linear-gradient(
     90deg,
     transparent,
@@ -143,21 +147,28 @@ table {
   display: block;
 }
 
-.openable-lists:last-child {
-  display: none;
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: 4;
-}
+.openable-list {
+  width: fit-content;
+  padding: 0;
 
-.openable-lists li {
-  text-decoration: none;
-}
+  > ul {
+    background-color: $bg-color;
+    display: none;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 0;
+    z-index: 4;
+  }
 
-.openable-lists:has(:first-child:hover):last-child {
-  display: block;
-  z-index: 4;
+  > ul > li {
+    text-decoration: none;
+  }
+
+  &:has(*:is(:hover, :focus, :checked)) > ul {
+    display: block;
+    z-index: 4;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -172,15 +183,26 @@ table {
 }
 
 @keyframes blink {
-  0%, 20% {
+  0%,
+  20% {
     opacity: 0;
   }
-  20%, 100% {
+  20%,
+  100% {
     opacity: 1;
   }
 }
 
-@keyframes move-bg {
+@keyframes mark {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes loading {
   0%,
   100% {
     background-position: 0 0;

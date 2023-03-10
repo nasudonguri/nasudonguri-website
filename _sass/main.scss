@@ -1,6 +1,7 @@
 $theme-color: #0000ff;
 $theme-text-color: #f2f2f2;
-$margin: 3vmin;
+$margin: 3svmin;
+$margin-top: calc($margin / 2);
 $padding: 10px;
 $width: calc(100svw - $margin * 2);
 
@@ -25,7 +26,6 @@ $shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 * {
   box-sizing: border-box;
-  display: block;
   padding: 2px 5px;
   color: $text-color;
   margin: 0;
@@ -38,7 +38,9 @@ article {
   background-color: $bg-color;
   border-radius: 10px;
   box-shadow: $shadow;
+  margin: $margin-top $margin;
   padding: $padding;
+  width: $width;
   z-index: 2;
 }
 
